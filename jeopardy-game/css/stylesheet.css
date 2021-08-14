@@ -1,0 +1,31 @@
+:root {
+    color:
+         blue, linear-gradient (80deg, #0120CB 0%, #011BA9 100%),
+         yellow,
+         green #90FF7E,
+         #FFA57E,
+         spooky-orange #ad4e08,
+         spooky-orange-text #fffec8,
+         gap 0.1em,
+         text-shadow 0px 4px 4px rgba(0, 0, 0, 0.25),
+}
+ * {
+    box-sizing: border-box;
+ }
+ 
+ html, body {
+    height: 100%;
+ }
+ 
+ body {
+    font-family: sans-serif;
+    /* background: #222; I may need this black color later*/
+    color: white;
+    font-size: 2vw;
+    text-align: center;
+    padding: 1em;
+    background: linear-gradient(180deg, #3a3a9c 0%, #2c2c94 100%);
+    /* #2E2E3A 0%, #0C0C2C 100% Original colors in this background */
+}
+
+/* Don't forget to classes for front and back style for card flipping */
