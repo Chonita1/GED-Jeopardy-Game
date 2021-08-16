@@ -11,7 +11,8 @@ function shuffle(a) {
 
 class gedJeopardy {
     constructor(element, options={}) {
-        this.useCategoryIds = options.useCategoryIds[];  //do I need this or is this where my categories shld go?
+        // this.useCategoryIds = options.useCategoryIds[]; //do I need this or is this where my categories
+                                                    // shld go?
 
 //The GED categories patterned on GED test categories
 
@@ -44,6 +45,6 @@ class gedJeopardy {
 }
 
 
-//created a new instance of ged Jeopary
+//created a new instance of GED Jeopary
 const game = new gedJeopardy ( document.querySelector(".game"), {});
 game.startGame();
