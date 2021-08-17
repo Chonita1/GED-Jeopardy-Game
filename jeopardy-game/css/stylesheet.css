@@ -1,13 +1,13 @@
 :root {
     color:
          blue, linear-gradient (80deg, #0120CB 0%, #011BA9 100%);
-        --yelow: #ffe817,
-        --green: #90FF7E,
-        --red: #f00000,
-        --orange: #ad4e08,
-        -orange-text: #ffe6c8,
-      --gap: 0.1em;
-      --text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        --yelow: #ffe817;
+        --green: #90FF7E;
+        --red: #f00000;
+        --orange: #ad4e08;
+        --orange-text: #ffe6c8;
+        --gap: 0.1em;
+        --text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
  * {
     box-sizing: border-box;
