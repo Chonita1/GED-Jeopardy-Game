@@ -11,10 +11,9 @@
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/content.js"></script>
     <div class="game"></div>
-        <header classe="top-header"></header>
+        <header class="top-header"></header>
             <h1>GED Jeopardy!</h1>
-            <p class="score">Score<span class="score-count"></span>
-            </p>
+            <p class="score">Score<span class="score-count"></span></p>
         </header>
          <!-- container for the game board -->
          <div class="board">
@@ -24,22 +23,21 @@
             <div class="card-modal">
                 <div class=card-modal-inner>
                     <!-- pull clues from clue-text -->
-                    <h2 class="clue-text"> 
-                    </h2>
+                    <h2 class="clue-text"></h2>
                         <form autocomplete="off">
                             <input name="user-answer" type="text"/>
                             <button type="submit">Answer</button>
                         </form>
                         <div class="result">
                             <p class="result_success">CORRECT</p>
-                            <p class="result_falil">INCORRECT</p>
-                            <P class="result_correct-answer">
+                            <p class="result_fail">INCORRECT</p>
+                            <p class="result_correct-answer">
                                 <!-- correct answer pushed here -->
                                 The correct answer is <span class="result_correct-answer-text"></span>
-                            </P>
+                            </p>
                         </div>
                 </div>
-        </div>
+            </div>
     </div>
 </body>
 </html>
