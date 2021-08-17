@@ -11,12 +11,10 @@ function shuffle(a) {
 
 class gedJeopardy {
     constructor(element, options={}) {
-        // this.useCategoryIds = options.useCategoryIds[]; //do I need this or is this where my categories
-                                                    // shld go?
+       //Game categories based on GED test categories
+        this.useCategoryIds = options.useCategoryIds['language arts', 'science', 'social studies', 'math']; 
 
-//The GED categories patterned on GED test categories
-
-        this.categories = ['language arts', 'science', 'social studies', 'math'];
+        this.categories = [];
         this.clues = {};
 
 //States
