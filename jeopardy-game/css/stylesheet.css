@@ -29,7 +29,7 @@
 /* Don't forget to classes for front and back style for card flipping */
 
 .top-header {
-   display:flex;
+   display: flex;
    justify-content: space-between;
    align-items: center;
    text-shadow: var(--text-shadow);
@@ -97,7 +97,7 @@
    right: 0;
    top: 0;
    bottom: 0;
-   background-color: var(--blue);
+   background: var(--blue);
    position: fixed;
    font-size: 2vw;
    text-align: center;
@@ -129,7 +129,7 @@
    border: 0;
    text-align: center;
    border-top-left-radius: 0.4em;
-   border-bottom-right-radius: 0.4em;
+   border-bottom-left-radius: 0.4em;
 }
 .card-modal form button[type="submit"] {
    padding-left: 2em;
