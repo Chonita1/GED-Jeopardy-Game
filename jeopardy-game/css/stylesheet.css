@@ -1,6 +1,5 @@
 :root {
-    color:
-         blue, linear-gradient (80deg, #0120CB 0%, #011BA9 100%);
+        --blue: linear-gradient(80deg, #0120CB 0%, #011BA9 100%);
         --yelow: #ffe817;
         --green: #90FF7E;
         --red: #f00000;
