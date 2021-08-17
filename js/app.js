@@ -34,14 +34,39 @@ class gedJeopardy {
         this.failTextElement = element.querySelector('.result_fail');
     }
     startGame() {
+        this.boardElement.addEventListener("click", event =>{
+            if (event.target.dataset.cluieID) {
+                this.handleClueClick(event);
+            }
+        });
+        this.formElement.addEventListener("submit", event => {
+            this.handleFormSubmit(event);
+        });
+
+        //make initial state of score
         this.updateScore(0);
 }
     updateScore(change) {
         this.score += change;
         this.scoreCountElement.textContent = this.score;
-    }
-}
 
+        
+
+    }   //Build category list
+        result.forEach(result, categoryIndex) => {
+
+        }
+
+
+
+}   //starting with a blank category
+    let category = {
+        title: result.title, clues: []
+    }
+    //adding all the clues by category
+    let clues = shuffle(result.clues).splice(0.5).forEach((clue, index) => {
+        console.log(clue)
+    })
 
 //created a new instance of GED Jeopary
 const game = new gedJeopardy ( document.querySelector(".game"), {});
