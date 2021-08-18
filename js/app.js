@@ -33,7 +33,63 @@ questions.forEach(
 // combine output list into one HTML string & place on the page
 quizContainer.innerHTML = output.join('');
 
-function showResults(){}
+// function to loop over the answers, check them, & show results.
+function showResults(){
+
+    // collect answer containers from game
+const answerContainers = quizContainer.querySelectorAll('.answers');
+
+// keep track of user's answers
+let numCorrect = 0;
+
+//the forEach method
+ myQuestions.forEach( (currentQuestion, questionNumber) => {
+     // find selected answer
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+    // if answer is correct add to the number of correct answers
+    if(userAnswer === currentQuestion.correctAnswer) {
+        numCorrect++;
+    // color the answers green
+    answerContainers[questionNumber].style.color = 'green';
+    }
+    // if answer is wrong color answer red
+    else{
+         answerContainers[questionNumber].style.color = 'red';
+    }
+ });
+//  show number of correct answers from total
+resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
+// select all of the answer containers in game's HTML and create variables to 
+// keep track of player’s current answer & the total number of correct answers.
+
+const answerContainers = quizContainer.querySelectorAll('.answers');
+let numCorrect = 0;
+
+// loop through each question & check answers
+questions.forEach((currentQuestion, questionNumber) => {
+const answerContainer = answerContainers[questionNumber];
+const selector = `input[name=question${questionNumber}]:checked`;
+const userAnswer = answerContainer.querySelector(selector) || {}.value;
+
+// if answer is correct add to number of correct answwers
+if(userAnswer === currentQuestion.correctAnswer) {
+    numCorrect++;
+
+    // if answer is correct color answers green
+    answerContainers[questionNumber].style.color = 'green';
+}
+    // if answer is incorrect or blank color it red
+else {
+    answerContainers[questionNumber].style.color = 'red';
+}
+});
+   
+
+
+}
 
 // display quiz right away
 buildQuiz();
