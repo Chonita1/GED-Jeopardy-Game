@@ -1,4 +1,24 @@
 console.log('welcome to GED Jeopardy!')
+console.log(questions.a);
+
+// consts to access these HTML elements:
+const quizContainer = document.getElementById('quiz');
+const resultsContainer = document.getElementById('results');
+const submitButton = document.getElementById('submit');
+
+
+// function to build quiz & show results
+function buildQuiz(){}
+
+function showResults(){}
+
+// display quiz right away
+buildQuiz();
+
+// addEventLisnter to show results on click of submit button
+submitButton.addEventListener('click', showResults);
+
+
 // function to shuffle an array
 function shuffle(a) {
     for(let i = a.length - 1; i > 0; i--) {
