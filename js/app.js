@@ -65,8 +65,8 @@ resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
 // select all of the answer containers in game's HTML and create variables to 
 // keep track of player’s current answer & the total number of correct answers.
 
-const answerContainers = quizContainer.querySelectorAll('.answers');
-let numCorrect = 0;
+answerContainers = quizContainer.querySelectorAll('.answers');
+numCorrect = 0;
 
 // loop through each question & check answers
 questions.forEach((currentQuestion, questionNumber) => {
