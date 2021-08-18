@@ -10,15 +10,39 @@ const submitButton = document.getElementById('submit');
 // function to build quiz & show results
 function buildQuiz(){
     const output = [];
-}
+
+//for each statement to callback & execute once once for each array element
+questions.forEach(
+    (currentQuestion, questionNumber) => {
+        const answers = [];
+        for(letter in currentQuestion.answers) {
+            answers.push(
+                `<label>
+                    <input type="radio" name="question${questionNumber}" value="${letter}">
+                    ${letter} : ${currentQuestion.answers[letter]}
+          </label>`
+        );
+      }
+      // add this question & its answers to the output
+      output.push(
+          `<div class="question"> ${currentQuestion.question} </div>
+          <div class="answers"> ${answers.join('')} </div>`
+      );
+    }
+);
+// combine output list into one HTML string & place on the page
+quizContainer.innerHTML = output.join('');
 
 function showResults(){}
 
 // display quiz right away
 buildQuiz();
 
-// addEventLisnter to show results on click of submit button
+// addEventListener to show results on click of submit button
 submitButton.addEventListener('click', showResults);
+
+
+
 
 
 // function to shuffle an array
@@ -152,4 +176,4 @@ let indexNumber = 0 //will be used in displaying next question
 
 //created a new instance of GED Jeopary
 const game = new gedJeopardy ( document.querySelector(".game"), {});
-game.startGame();
+game.startGame()};
