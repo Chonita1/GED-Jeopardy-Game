@@ -8,7 +8,9 @@ const submitButton = document.getElementById('submit');
 
 
 // function to build quiz & show results
-function buildQuiz(){}
+function buildQuiz(){
+    const output = [];
+}
 
 function showResults(){}
 
