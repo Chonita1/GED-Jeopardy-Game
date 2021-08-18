@@ -21,7 +21,43 @@ class gedJeopardy {
         this.currentClue = null;
         this.score = 0;
 
-//Element querySelectors for board, score count, form, answers, clues, results
+        let shuffledQuestions = [] //empty array to hold shuffled selected questions out of all available questions
+
+        function handleQuestions() { 
+            //to shuffle and push questions to shuffledQuestion
+                while(shuffledQuestions.length <= 2) {
+                    const random = questions[Math.floor(Math.random() * questions.length)]
+                    if (!shuffledQuestions.includes(random)) {
+                        shuffledQuestions.push(random)
+                    }
+                }
+        }
+        let questionNumber = 1 //holds the current question number
+        let playerScore = 0  //holds the player score
+        let wrongAttempt = 0 //amount of wrong answers picked by player
+        let indexNumber = 0 //will be used in displaying next question
+        
+        // function for displaying next question in the array to dom
+        //also handles displaying players and quiz information to dom
+        function nextQuestion(index) {
+            handleQuestions()
+            const currentQuestion = shuffledQuestions[index]
+        
+        document.getElementById("question-number").innerHTML = questionNumber
+        document.getElementById("player-score").innerHTML = playerScore
+        document.getElementById("display-question").innerHTML = currentQuestion.question;
+        document.getElementById("option-one-label").innerHTML = currentQuestion.optionA;
+        document.getElementById("option-two-label").innerHTML = currentQuestion.optionB;
+        document.getElementById("option-three-label").innerHTML = currentQuestion.optionC;
+        document.getElementById("option-four-label").innerHTML = currentQuestion.optionD;
+    }    
+
+    
+    
+    
+    
+    
+            //Element querySelectors for board, score count, form, answers, clues, results
         this.boardElement = element.querySelector('.board');
         this.scoreCountElement = element.querySelector('score-count');
         this.formElement = element.querySelector('form');
@@ -52,14 +88,38 @@ class gedJeopardy {
 
         
 
-    }   //Build category list
-        result.forEach(result, categoryIndex) => {
+    // }   //Build category list
+    let results = []
+    //     result.forEach(result, categoryIndex) => {
 
         }
+}
+let shuffledQuestions = [] //empty array to hold shuffled selected questions out of all available questions
+
+function handleQuestions() { 
+    //to shuffle and push questions to shuffledQuestion
+        while(shuffledQuestions.length <= 2) {
+            const random = questions[Math.floor(Math.random() * questions.length)]
+            if (!shuffledQuestions.includes(random)) {
+                shuffledQuestions.push(random)
+            }
+        }
+}
+let questionNumber = 1 //holds the current question number
+let playerScore = 0  //holds the player score
+let wrongAttempt = 0 //amount of wrong answers picked by player
+let indexNumber = 0 //will be used in displaying next question
+
+
+// function for displaying next question in the array to dom
+//also handles displaying players and quiz information to dom
+// function NextQuestion(index) {
+//     handleQuestions()
+//     const currentQuestion = shuffledQuestions[index]
 
 
 
-}   //starting with a blank category
+// }   //starting with a blank category
     let category = {
         title: result.title, clues: []
     }
