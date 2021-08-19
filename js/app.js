@@ -31,6 +31,7 @@ questions.forEach(
       );
     }
 );
+// showQuestions(questions, quizContainer);
 // combine output list into one HTML string & place on the page
 quizContainer.innerHTML = output.join('');
 
@@ -44,7 +45,7 @@ const answerContainers = quizContainer.querySelectorAll('.answers');
 let numCorrect = 0;
 
 //the forEach method
- myQuestions.forEach( (currentQuestion, questionNumber) => {
+ questions.forEach( (currentQuestion, questionNumber) => {
      // find selected answer
     const answerContainer = answerContainers[questionNumber];
     const selector = `input[name=question${questionNumber}]:checked`;
@@ -94,6 +95,9 @@ else {
 
 // display quiz right away
 buildQuiz();
+
+//addEventListener to show question on click of choose button
+chooseButton.addEventListener('click', showQuestion);
 
 // addEventListener to show results on click of submit button
 submitButton.addEventListener('click', showResults);
