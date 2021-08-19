@@ -1,19 +1,29 @@
 console.log('welcome to GED Jeopardy!')
 console.log(questions.a);
 
-let playerTime = 0;
-let gameTimer = setInterval(function() {
-    if(playerTime >= 5) {
-        clearInterval(gameTimer);
-        document.getElementById('countdown').innerHTML = "You're out of time";
-    }
-        else {
-        document.getElementById("countdown").innerHTML = playerTime + "Best of Luck!"; 
-    }
-    playerTime += 1;
-},  1000);
 
-
+let timer;
+let timeLeft = 10;
+function playOver() {
+    cancelInterval(timer);
+    $(`#playAgainButton`).showNextSlide();
+}
+function gameOver() {
+    alert('Game Over')
+}
+function updateTimer() {
+    timeLeft = timeLeft - 1;
+    if(timeLeft >= 0)
+        document.querySelector(`#timer`).innerHTML(timeLeft);
+    else {
+        gameOver();
+    }
+}
+function start() {
+    timer = setInterval(updateTimer, 1000);
+    updateTimer();
+    document.querySelector(`#playAgainButton`).showSlide();
+}
 
 // consts to access these HTML elements:
 const quizContainer = document.getElementById('quiz');
@@ -26,59 +36,58 @@ const chooseButton = document.getElementById('choose');
 function buildQuiz(){
     const output = [];
 
-//forEach statement to callback & execute once once for each array element
-questions.forEach(
-    (currentQuestion, questionNumber) => {
-        const answers = [];
-        for(letter in currentQuestion.answers) {
-            answers.push(
-                `<label>
-                    <input type="radio" name="question${questionNumber}" value="${letter}">
-                    ${letter} : ${currentQuestion.answers[letter]}
-          </label>`
+    //forEach statement to callback & execute once once for each array element
+    questions.forEach(
+        (currentQuestion, questionNumber) => {
+            const answers = [];
+            for(letter in currentQuestion.answers) {
+                answers.push(
+                    `<label>
+                        <input type="radio" name="question${questionNumber}" value="${letter}">
+                        ${letter} : ${currentQuestion.answers[letter]}
+                    </label>`
+                );
+            }
+        // add this question & its answers to the output
+        output.push(
+            `<div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join('')} </div>
+            <div class="slide"></div>`
         );
-      }
-      // add this question & its answers to the output
-      output.push(
-          `<div class="question"> ${currentQuestion.question} </div>
-          <div class="answers"> ${answers.join('')} </div>`
-          `<div class="slide">
-          <div class="question"> ${currentQuestion.quesion}
-          </div>`
-      );
-    }
-);
-// showQuestions(questions, quizContainer);
-// combine output list into one HTML string & place on the page
-quizContainer.innerHTML = output.join('');
+        }
+    );
+    // showQuestions(questions, quizContainer);
+    // combine output list into one HTML string & place on the page
+    quizContainer.innerHTML = output.join('');
+}
 
 // function to loop over the answers, check them, & show results.
 function showResults(){
 
     // collect answer containers from game
-const answerContainers = quizContainer.querySelectorAll('.answers');
+    const answerContainers = quizContainer.querySelectorAll('.answers');
 
-// keep track of user's answers
-let numCorrect = 0;
+    // keep track of user's answers
+    let numCorrect = 0;
 
-//the forEach method
- questions.forEach( (currentQuestion, questionNumber) => {
-     // find selected answer
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+    //the forEach method
+    questions.forEach( (currentQuestion, questionNumber) => {
+        // find selected answer
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-    // if answer is correct add to the number of correct answers
-    if(userAnswer === currentQuestion.correctAnswer) {
-        numCorrect++;
-    // color the answers green
-    answerContainers[questionNumber].style.color = 'green';
-    }
-    // if answer is wrong color answer red
-    else{
-         answerContainers[questionNumber].style.color = 'red';
-    }
- });
+        // if answer is correct add to the number of correct answers
+        if(userAnswer === currentQuestion.correctAnswer) {
+            numCorrect++;
+        // color the answers green
+        answerContainers[questionNumber].style.color = 'green';
+        }
+        // if answer is wrong color answer red
+        else{
+            answerContainers[questionNumber].style.color = 'red';
+        }
+    });
 //  show number of correct answers from total
 resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
 // select all of the answer containers in game's HTML and create variables to 
@@ -292,4 +301,4 @@ nextButton.addEventListener("click", showNextSlide);
 
 //created a new instance of GED Jeopary
 const game = new gedJeopardy ( document.querySelector(".game"), {});
-game.startGame()};
+game.startGame();
