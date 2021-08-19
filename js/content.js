@@ -19,5 +19,5 @@ const questions = [
           c: "what is a mandate?",
           d: "what is a charter?"
     },
-        correctAnswer: "d"
+        correctAnswer: "a"
 }];
