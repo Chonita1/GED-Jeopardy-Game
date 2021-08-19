@@ -1,6 +1,20 @@
 console.log('welcome to GED Jeopardy!')
 console.log(questions.a);
 
+let playerTime = 0;
+let gameTimer = setInterval(function() {
+    if(playerTime >= 5) {
+        clearInterval(gameTimer);
+        document.getElementById('countdown').innerHTML = "You're out of time";
+    }
+        else {
+        document.getElementById("countdown").innerHTML = playerTime + "Best of Luck!"; 
+    }
+    playerTime += 1;
+},  1000);
+
+
+
 // consts to access these HTML elements:
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');

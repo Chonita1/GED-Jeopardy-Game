@@ -13,22 +13,23 @@ const questions = [
     {
         question: "Troy was devastated that he missed the three-pointer that would have clinched the championship wrestling match, yet he found some ______ in the fact that it was his best effort.",
         answers: {
-        a: "what is solace?",
+            a: "what is solace?",
             b: "what is attitude?",
             c: "what is ambition?",
             d: "what is decimation?"
     },
-    correctAnswer: "d"
+    correctAnswer: "a"
     },
     {
         question: "The constitution can be altered through the passage of",
         answers: {
 
-          a: "what is an amendment?",
-          b: "what is a declaration?",
+          a: "what is a declaration?",
+          b: "what is an amendment?",
           c: "what is a mandate?",
           d: "what is a charter?"
+          
     },
-        correctAnswer: "a"
+        correctAnswer: "b"
     },
 ];
