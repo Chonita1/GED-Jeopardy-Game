@@ -98,6 +98,10 @@ else {
 
 // display quiz right away
 buildQuiz();
+const previousButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
 
 //addEventListener to show question on click of choose button
 chooseButton.addEventListener('click', showQuestion);
