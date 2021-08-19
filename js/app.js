@@ -143,7 +143,9 @@ chooseButton.addEventListener('click', showQuestion);
 // addEventListener to show results on click of submit button
 submitButton.addEventListener('click', showResults);
 
-
+//  hook nav buttons to the shownext and showprevious slide funciton
+previousButton.addEventListener("click", showPreviousSlide);
+nextButton.addEventListener("click", showNextSlide);
 
 // // function to shuffle an array
 // function shuffle(a) {
