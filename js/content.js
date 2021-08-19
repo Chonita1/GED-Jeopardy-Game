@@ -1,7 +1,17 @@
 console.log("Let's play!")
 const questions = [
     {
-        question: "Troy was devastated that he lost the wrestling championship, yet he found some ______ in the fact that it was his best effort.",
+        question: "This sport is played by over 4 billion people in the world.",
+        answers: {
+            a: "what is basketball?",
+            b: "what is football?",
+            c: "what is soccer?",
+            d: "what is baseball?"
+    },
+    correctAnswer: "c"
+    },
+    {
+        question: "Troy was devastated that he missed the three-pointer that would have clinched the championship wrestling match, yet he found some ______ in the fact that it was his best effort.",
         answers: {
         a: "what is solace?",
             b: "what is attitude?",

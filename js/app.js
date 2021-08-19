@@ -12,7 +12,7 @@ const chooseButton = document.getElementById('choose');
 function buildQuiz(){
     const output = [];
 
-//for each statement to callback & execute once once for each array element
+//forEach statement to callback & execute once once for each array element
 questions.forEach(
     (currentQuestion, questionNumber) => {
         const answers = [];
