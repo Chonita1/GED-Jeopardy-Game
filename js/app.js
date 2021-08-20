@@ -1,15 +1,18 @@
 console.log('Welcome to GED Jeopardy!')
 console.log(questions.a);
 
+let player1Score = 0;
+let player2Score = 0;
+
 let timer;
-let timeLeft = 10;
+let timeLeft = 30;
 
 function playOver() {
     cancelInterval(timer);
     $(`#playAgainButton`).showNextSlide();
 }
 function roundOver() {
-    alert('Round Over');
+    alert('Round Over. Next Player is Up');
 }
 function updateTimer() {
     timeLeft = timeLeft - 1;
