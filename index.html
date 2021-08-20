@@ -12,7 +12,7 @@
         <header class="top-header"></header>
             <h1>Let's Play GED Jeopardy!</h1>
             <h1 id="playerName"></h1>
-            <p class="score">Score<span class="score-count"></span></p>
+            <span id="score">Scores<span class="score-count"></span>
             <span id="player1Score"></span>
             <span id="player2Score"></span>
             <div class="container">
@@ -26,7 +26,7 @@
                     <input type="text" class="form-control" id="player2" placeholder="Name of player 2">
                   </div>
             <!-- container for timer -->
-            <p>You have: <span id="timer">30</span> seconds remaining!</p>
+            <p>You have: <span id="timer">45</span> seconds remaining!</p>
             <button id="playAgainButton" onclick="start()">Start Game</button>
            
             <!-- <div class="container">
@@ -43,13 +43,14 @@
         </div>
             <button id="submit">Submit Answer</button>
             <div id="results"></div>
-            <button id="choose">Choose Question</button>
+            <!-- <button id="choose">Choose Question</button> -->
             <div id="choices"></div>
             <div class="quiz-container">
                 <div id="quiz"></div>
             </div>
             <button id="previous">Previous Question</button>
             <button id="next">Next Question</button>
+
 
             <!-- <div class="choice-container">
                     <p class="choice-text" data-number="1">Choice 1</p>
