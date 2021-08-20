@@ -1,22 +1,22 @@
-console.log('welcome to GED Jeopardy!')
+console.log('Welcome to GED Jeopardy!')
 console.log(questions.a);
-
 
 let timer;
 let timeLeft = 10;
+
 function playOver() {
     cancelInterval(timer);
     $(`#playAgainButton`).showNextSlide();
 }
-function gameOver() {
-    alert('Game Over')
+function roundOver() {
+    alert('Round Over');
 }
 function updateTimer() {
     timeLeft = timeLeft - 1;
-    if(timeLeft >= 0)
+    if (timeLeft >= 0)
         document.querySelector(`#timer`).innerHTML(timeLeft);
     else {
-        gameOver();
+        roundOver();
     }
 }
 function start() {
@@ -36,7 +36,7 @@ const chooseButton = document.getElementById('choose');
 function buildQuiz(){
     const output = [];
 
-    //forEach statement to callback & execute once once for each array element
+    //forEach statement to callback & execute once for each array element
     questions.forEach(
         (currentQuestion, questionNumber) => {
             const answers = [];
@@ -48,15 +48,16 @@ function buildQuiz(){
                     </label>`
                 );
             }
-        // add this question & its answers to the output
+        // adds question & its answers to the output
         output.push(
-            `<div class="question"> ${currentQuestion.question} </div>
+            `<div class="slide">
+            <div class="question"> ${currentQuestion.question} </div>
             <div class="answers"> ${answers.join('')} </div>
-            <div class="slide"></div>`
+            </div>`
         );
         }
     );
-    // showQuestions(questions, quizContainer);
+    // showQuestion(questions, quizContainer);
     // combine output list into one HTML string & place on the page
     quizContainer.innerHTML = output.join('');
 }
@@ -136,7 +137,7 @@ function showSlide(n) {
     // If we’re on first slide, hide Previous Slide button. Otherwise, show the button.
     // If we’re on last slide, hide  Next Slide button & show the Submit button. 
     // Otherwise, show the Next Slide button and hide the Submit button.
-    if(currentSlide === 0) {
+    if (currentSlide === 0) {
         previousButton.style.display = 'none';
     }
     else {
@@ -153,7 +154,7 @@ function showSlide(n) {
 }
 
 function showNextSlide() {
-    showSlide(currentlSlide + 1);    
+    showSlide(currentSlide + 1);    
 }
 
 function showPreviousSlide() {
@@ -161,7 +162,7 @@ function showPreviousSlide() {
 }
 
 //addEventListener to show question on click of choose button
-chooseButton.addEventListener('click', showQuestion);
+// chooseButton.addEventListener('click', showQuestion);
 
 // addEventListener to show results on click of submit button
 submitButton.addEventListener('click', showResults);
