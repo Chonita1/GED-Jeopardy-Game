@@ -32,4 +32,30 @@ const questions = [
     },
         correctAnswer: "b"
     },
+    {
+        question: `This student had been banned from all school functions, 
+                   so he sent Devon as his ____ to stir up trouble`,
+        answers: {
+
+            a: "what is a posse",
+            b: "what is a surrogate",
+            c:  "what is a template",
+            d:  "what is a genome"
+    
+    },
+        correctAnswer: "b"
+    },
+    {
+        question: "The the value of 5 + 4 . 3 ÷ 6 – 1",
+        answers: {
+
+          a: "5/9?",
+          b: "what is an amendment?",
+          c: "what is 6",
+          d: "what is 0?"
+
+    },
+        correctAnswer: "c"
+    },
+
 ];

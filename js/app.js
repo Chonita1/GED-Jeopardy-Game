@@ -1,9 +1,12 @@
 console.log('Welcome to GED Jeopardy!')
 console.log(questions.a);
 
-player_name = prompt("Let's Play GED Jeopardy! What's your name?")
-document.getElementById('playerName').innerHTML = player_name
+// player_name = prompt("Enter your name and press Start Game to begin!")
+// document.getElementById('playerName').innerHTML = player_name
 
+// I tried to wrap all of the game logic into this function, now
+//the questions don't show up
+const game = () => {} // stub
 let player1Score = 0;
 let player2Score = 0;
 
@@ -12,15 +15,16 @@ let timeLeft = 30;
 
 function playOver() {
     cancelInterval(timer);
-    $(`#playAgainButton`).showNextSlide();
+    $('#playAgainButton').showNextSlide();
 }
 function roundOver() {
     alert('Round Over. Next Player is Up');
+    clearInterval(timer);
 }
 function updateTimer() {
     timeLeft = timeLeft - 1;
     if (timeLeft >= 0)
-        document.querySelector(`#timer`).innerHTML(timeLeft);
+        document.querySelector('#timer').innerHTML = timeLeft;
     else {
         roundOver();
     }
@@ -28,7 +32,7 @@ function updateTimer() {
 function start() {
     timer = setInterval(updateTimer, 1000);
     updateTimer();
-    document.querySelector(`#playAgainButton`).showSlide();
+    document.querySelector('#playAgainButton').showSlide();
 }
 
 // consts to access these HTML elements:
@@ -105,21 +109,21 @@ numCorrect = 0;
 
 // loop through each question & check answers
 questions.forEach((currentQuestion, questionNumber) => {
-const answerContainer = answerContainers[questionNumber];
-const selector = `input[name=question${questionNumber}]:checked`;
-const userAnswer = answerContainer.querySelector(selector) || {}.value;
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = answerContainer.querySelector(selector) || {}.value;
 
-// if answer is correct add to number of correct answwers
-if(userAnswer === currentQuestion.correctAnswer) {
-    numCorrect++;
+    // if answer is correct add to number of correct answwers
+    if(userAnswer === currentQuestion.correctAnswer) {
+        numCorrect++;
 
-    // if answer is correct color answers green
-    answerContainers[questionNumber].style.color = 'green';
-}
-    // if answer is incorrect or blank color it red
-else {
-    answerContainers[questionNumber].style.color = 'red';
-}
+        // if answer is correct color answers green
+        answerContainers[questionNumber].style.color = 'green';
+    }
+        // if answer is incorrect or blank color it red
+    else {
+        answerContainers[questionNumber].style.color = 'red';
+    }
 });
  
 }
@@ -176,6 +180,7 @@ submitButton.addEventListener('click', showResults);
 //  hook nav buttons to the shownext and showprevious slide funciton
 previousButton.addEventListener("click", showPreviousSlide);
 nextButton.addEventListener("click", showNextSlide);
+
 
 // // function to shuffle an array
 // function shuffle(a) {
@@ -306,6 +311,7 @@ nextButton.addEventListener("click", showNextSlide);
 //         console.log(clue)
 //     })
 
-//created a new instance of GED Jeopary
-const game = new gedJeopardy ( document.querySelector(".game"), {});
-game.startGame();
+// const game = gedJeopardy;
+// created a new instance of GED Jeopary
+// const game = new gedJeopardy (document.querySelector(".game"), {});
+// game.startGame();
