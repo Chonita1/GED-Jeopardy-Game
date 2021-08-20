@@ -1,6 +1,9 @@
 console.log('Welcome to GED Jeopardy!')
 console.log(questions.a);
 
+player_name = prompt("Let's Play GED Jeopardy! What's your name?")
+document.getElementById('playerName').innerHTML = player_name
+
 let player1Score = 0;
 let player2Score = 0;
 
