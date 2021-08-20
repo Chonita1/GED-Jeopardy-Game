@@ -9,9 +9,11 @@ console.log(questions.a);
 const game = () => {} // stub
 let player1Score = 0;
 let player2Score = 0;
+let playerID = 1;
 
+let timeInterval = 15;
 let timer;
-let timeLeft = 30;
+let timeLeft = timeInterval;
 
 function playOver() {
     cancelInterval(timer);
@@ -20,6 +22,13 @@ function playOver() {
 function roundOver() {
     alert('Round Over. Next Player is Up');
     clearInterval(timer);
+    timeLeft = timeInterval;
+    // if statement to switch players
+    if (playerID === 1) {
+        playerID = 2;
+    } else {
+        playerID = 1;
+    }
 }
 function updateTimer() {
     timeLeft = timeLeft - 1;
@@ -30,9 +39,17 @@ function updateTimer() {
     }
 }
 function start() {
+    buildQuiz();
+    slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+
+    showSlide(0);
+    showSlide(currentSlide);
+    slides = document.querySelectorAll(".slide");
+    //document.querySelector('#quiz > div.slide').classList.add('active-slide');
     timer = setInterval(updateTimer, 1000);
     updateTimer();
-    document.querySelector('#playAgainButton').showSlide();
+    //document.querySelector('#playAgainButton').showSlide();
 }
 
 // consts to access these HTML elements:
@@ -76,7 +93,7 @@ function buildQuiz(){
 function showResults(){
 
     // collect answer containers from game
-    const answerContainers = quizContainer.querySelectorAll('.answers');
+    let answerContainers = quizContainer.querySelectorAll('.answers');
 
     // keep track of user's answers
     let numCorrect = 0;
@@ -99,39 +116,48 @@ function showResults(){
             answerContainers[questionNumber].style.color = 'red';
         }
     });
-//  show number of correct answers from total
-resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
-// select all of the answer containers in game's HTML and create variables to 
-// keep track of player’s current answer & the total number of correct answers.
-
-answerContainers = quizContainer.querySelectorAll('.answers');
-numCorrect = 0;
-
-// loop through each question & check answers
-questions.forEach((currentQuestion, questionNumber) => {
-    const answerContainer = answerContainers[questionNumber];
-    const selector = `input[name=question${questionNumber}]:checked`;
-    const userAnswer = answerContainer.querySelector(selector) || {}.value;
-
-    // if answer is correct add to number of correct answwers
-    if(userAnswer === currentQuestion.correctAnswer) {
-        numCorrect++;
-
-        // if answer is correct color answers green
-        answerContainers[questionNumber].style.color = 'green';
+    if (playerID === 1) {
+        player1Score = numCorrect * 100;
+        document.querySelector('#player1Score').innerHTML = player1Score;
+    } else {
+        player2Score = numCorrect * 100;
+        document.querySelector('#player2Score').innerHTML = player2Score;
     }
-        // if answer is incorrect or blank color it red
-    else {
-        answerContainers[questionNumber].style.color = 'red';
-    }
-});
+
+
+    //  show number of correct answers from total
+    resultsContainer.innerHTML = `${numCorrect} out of ${questions.length}`;
+    // select all of the answer containers in game's HTML and create variables to 
+    // keep track of player’s current answer & the total number of correct answers.
+
+    answerContainers = quizContainer.querySelectorAll('.answers');
+    numCorrect = 0;
+
+    // loop through each question & check answers
+    questions.forEach((currentQuestion, questionNumber) => {
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = answerContainer.querySelector(selector) || {}.value;
+
+        // if answer is correct add to number of correct answwers
+        if(userAnswer === currentQuestion.correctAnswer) {
+            numCorrect++;
+
+            // if answer is correct color answers green
+            answerContainers[questionNumber].style.color = 'green';
+        }
+            // if answer is incorrect or blank color it red
+        else {
+            answerContainers[questionNumber].style.color = 'red';
+        }
+    });
  
 }
 // display quiz right away
 buildQuiz();
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
-const slides = document.querySelectorAll(".slide");
+let slides = document.querySelectorAll(".slide");
 let currentSlide = 0;
 
 showSlide(0);
